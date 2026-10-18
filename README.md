@@ -11,29 +11,59 @@ You play as an SVU detective. Examine evidence, interview persons of interest, f
 - Episodes contain mature themes (sexual violence, abuse, etc.). Content is kept non-graphic and focused on procedure and decision-making.
 - For best results, watch the episode first (or along with the game) so the interactive choices feel contextual.
 
-## How to Play
+## Quick Start (Local)
 
-1. Open `index.html` in a modern browser (Chrome, Firefox, Edge, Safari).
-2. Select an episode from the Season 5 grid.
-3. Work the case: review the overview, examine evidence cards, choose interrogation approaches, follow or discard leads.
-4. Your choices affect the investigation path and final case assessment.
+```bash
+# 1. Clone the repo
+git clone https://github.com/joeyfrogge-jpg/svu-season5-detective-game.git
+cd svu-season5-detective-game
 
-No build step required for basic use. For local development with ES modules, a simple static server is recommended (`npx serve` or `python -m http.server`).
+# 2. Install nothing extra is required, but a static server is recommended for ES modules
+npm start
+# or
+npx serve . -p 3000
+# or
+python -m http.server 8000
+```
+
+Open the URL shown (usually http://localhost:3000) in Chrome, Firefox, Edge, or Safari.
+
+You can also open `index.html` directly, but some browsers restrict ES module loading from the `file://` protocol — a local server is the reliable way.
+
+## Deploy to GitHub Pages (Free & Permanent)
+
+1. Go to the repository on GitHub: https://github.com/joeyfrogge-jpg/svu-season5-detective-game
+2. Click **Settings** → **Pages** (left sidebar)
+3. Under **Source**, choose **Deploy from a branch**
+4. Select branch **main** and folder **/ (root)**
+5. Click **Save**
+
+After a minute or two the site will be live at:
+
+**https://joeyfrogge-jpg.github.io/svu-season5-detective-game/**
+
+Any future push to `main` will automatically update the live site.
+
+### Alternative: Netlify / Vercel / Cloudflare Pages
+
+- Drag-and-drop the project folder, or
+- Connect the GitHub repo and set the publish directory to `/` (root). No build command needed.
 
 ## Project Structure
 
 ```
 ├── index.html              # Episode selector & hub
+├── package.json            # npm start / serve scripts
 ├── css/
 │   └── styles.css          # Dark noir theme + animations
 ├── js/
 │   ├── engine.js           # Core interactive detective engine
-│   ├── main.js             # App bootstrap
-│   └── episodes/           # One module per episode (unique content)
+│   ├── main.js             # App bootstrap + episode loader
+│   └── episodes/           # One unique module per episode
 │       ├── 01-tragedy.js
 │       ├── 02-manic.js
-│       └── ... (all 25)
-├── assets/                 # Optional future icons / board elements
+│       ├── 03-mother.js
+│       └── ...
 └── README.md
 ```
 
@@ -65,26 +95,15 @@ No build step required for basic use. For local development with ES modules, a s
 24. Poison  
 25. Head  
 
-Each episode module contains unique evidence items, suspects, and decision trees tailored to that episode’s public plot points.
+Each episode has its own evidence board, persons of interest, branching interview questions, and decision stages based on public plot points.
 
 ## Design Goals
 
-- Structured and intentional, not thrown together
-- Clear visual hierarchy (evidence board, case file, interrogation pane)
-- Smooth CSS animations for card reveals, board updates, and state changes
+- Structured and intentional
+- Clear visual hierarchy (evidence board, case file, interrogation)
+- Smooth CSS animations
 - Replayable decision paths with meaningful feedback
-- Expandable architecture: deeper stages or new episodes can be added without rewriting the engine
-
-## Running Locally
-
-```bash
-# Recommended for proper module loading
-npx serve .
-# or
-python -m http.server 8000
-```
-
-Then open the served URL in your browser.
+- Easy to expand — new episodes are just additional modules
 
 ---
 
