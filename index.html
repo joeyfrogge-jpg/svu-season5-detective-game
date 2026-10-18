@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SVU Season 5 — Detective Game</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">
+      <div class="logo-mark">SVU</div>
+      <div class="logo-text">Season 5 <span>Detective</span></div>
+    </div>
+    <div class="header-meta">Interactive Case Files</div>
+  </header>
+
+  <main class="container">
+    <!-- Episode Selector -->
+    <section id="selector-view">
+      <div class="hero">
+        <h1>Choose a Case</h1>
+        <p>Select an episode to open its interactive case file. Examine evidence, interview persons of interest, and work the investigation using publicly available plot points.</p>
+      </div>
+      <div class="episode-grid" id="episode-grid">
+        <!-- populated by main.js -->
+      </div>
+    </section>
+
+    <!-- Active Case -->
+    <section id="case-view" class="case-view">
+      <!-- engine renders here -->
+    </section>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
